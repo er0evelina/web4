@@ -145,7 +145,7 @@ else  {
     setcookie('date_value', $_POST['date'], time() + 30 * 24 * 60 * 60);
     $user = 'u67371';
     $pass = '3920651';
-    $db = new PDO('mysql:host=127.0.0.1;dbname=u67371', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $db = new PDO('mysql:host=localhost;dbname=u67371', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   
   if (empty($_POST['languages'])) {
