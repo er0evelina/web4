@@ -85,7 +85,7 @@ body {
 }
 
 label {
-    overflow-wrap: break-word;
+    overflow-wrap: normal;
 }
 
 .w-50 {
