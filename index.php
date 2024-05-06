@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     setcookie('phone_error', '', 100000);
     setcookie('phone_value', '', 100000);
     // Выводим сообщение.
-    $messages[] = '<div class="error">Заполните телефон.</div>';
+    $messages[] = '<div class="error">Заполните телефон +7 (XXX) XXX-XX-XX.</div>';
   }
  
   
@@ -125,21 +125,21 @@ $values = array();
 else {
   // Проверяем ошибки.
   $errors = FALSE;
-  if (empty($_POST['names'])) {
+  if (empty(htmlentities($_POST['names']))) {
     // Выдаем куку на день с флажком об ошибке в поле fio.
     setcookie('names_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
     // Сохраняем ранее введенное в форму значение на месяц.
 setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
-  if (empty($_POST['phone'])) {
+  if (!preg_match('/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/', $_POST['phone'])) {
     // Выдаем куку на день с флажком об ошибке в поле fio.
     setcookie('phone_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
   setcookie('phone_value', $_POST['phone'], time() + 30 * 24 * 60 * 60);
  
-  if (empty($_POST['email'])) {
+  if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     // Выдаем куку на день с флажком об ошибке в поле fio.
     setcookie('email_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
